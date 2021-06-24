@@ -1,8 +1,9 @@
 import React from "react";
+import FormLogin from "./FormLogin";
 
 const App = () => (
     <>
-        <h1>Nuevo Adist4</h1>
+        <FormLogin/>
     </>
 );
 
