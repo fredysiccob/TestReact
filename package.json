@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack serve --open",
     "build": "webpack ",
-    "test": "jest --verbose"
+    "test": "jest --env=jsdom --watchAll --verbose"
   },
   "devDependencies": {
     "@babel/cli": "^7.14.5",
@@ -31,7 +31,8 @@
   },
   "jest": {
     "testMatch": [
-      "**/*.steps.js"
+      "**/*.steps.js",
+      "**/*.test.js"
     ]
   },
   "repository": {
