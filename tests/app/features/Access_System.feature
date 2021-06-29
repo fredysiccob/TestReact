@@ -5,5 +5,12 @@ Feature: Acceso al sistema
 
   Scenario: Ingresando al sistema
     Given que el usuario esta en la pagina de login
-    When ingresa nickname "OSCOJOSE" y "Jesus-123"
+    When ingresa nickname "OSCOJOSE" y password "Jesus-123"
     Then el sistema valida que el nickname y contraseña son validos
+
+  Scenario: Error de acceso
+    Given que el usuario jesus osornio esta en la pagina de login
+    When ingresa nickname "OSCOJOE" y password "Jesus-123"
+    Then el sistema valida que el nickname y contraseña no son validos
+    And muestra un mensaje que “Usuario y/o contraseña inválidos”
+

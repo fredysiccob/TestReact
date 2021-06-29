@@ -1,9 +1,9 @@
 import React from "react";
-import FormLogin from "./FormLogin";
+import Login from "./components/views/Login";
 
 const App = () => (
     <>
-        <FormLogin/>
+        <Login/>
     </>
 );
 
