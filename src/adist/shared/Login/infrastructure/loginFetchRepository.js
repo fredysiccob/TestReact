@@ -1,4 +1,5 @@
-const LoginRepository = require("../domain/loginRepository");
+import LoginRepository from "../domain/loginRepository";
+
 
 class LoginFetchRepository extends LoginRepository{
 
