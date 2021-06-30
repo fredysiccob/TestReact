@@ -3,10 +3,15 @@ import LoginFetchRepository from "../../../../../src/adist/shared/Login/infrastr
 
 jest.mock('../../../../../src/adist/shared/Login/infrastructure/loginFetchRepository');
 
-describe('CaseUse ValidateLogin', function () {
+describe('CaseUse ValidateLogin', () => {
 
-    describe('Validar usuario y password', function () {
-        it('deberia regresar true cuando se usuario es valido y password es valido', async () => {
+    beforeEach(() => {
+        LoginFetchRepository.mockReset();
+    });
+
+    describe('Validar usuario y password', () => {
+
+        it('deberia permitir acceso con usuario y password validos', async () => {
             let user = 'OSCOJOSE';
             let password = 'Jesus-123';
             let repository = new LoginFetchRepository();
@@ -24,7 +29,7 @@ describe('CaseUse ValidateLogin', function () {
             expect(response).toEqual(true);
         });
 
-        it('deberia regresar false cuando el usuario es invalido y password valido', async () => {
+        it('deberia negar acceso con usuario es invalido y password valido', async () => {
             let user = 'OSCOJOS';
             let password = 'Jesus-123';
             let repository = new LoginFetchRepository();
@@ -38,7 +43,7 @@ describe('CaseUse ValidateLogin', function () {
             expect(response).toEqual(false);
         });
 
-        it('deberia regresar false cuando el usuario es valido y password invalido', async () => {
+        it('deberia negar acceso con usuario valido y password invalido', async () => {
             let user = 'OSCOJOSE';
             let password = 'Jesus-12';
             let repository = new LoginFetchRepository();
@@ -52,7 +57,7 @@ describe('CaseUse ValidateLogin', function () {
             expect(response).toEqual(false);
         });
 
-        it('deberia regresar true cuando el usuario es correo valido y password valido', async () => {
+        it('deberia permitir acceso con correo valido y password valido', async () => {
             let user = 'josornio@siccob.com.mx';
             let password = 'Jesus-123';
             let repository = new LoginFetchRepository();

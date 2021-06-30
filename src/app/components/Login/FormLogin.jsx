@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import ValidateLogin from "../../../adist/shared/Login/application/validateLogin";
 import LoginFetchRepository from "../../../adist/shared/Login/infrastructure/loginFetchRepository";
 
@@ -7,6 +7,11 @@ const FormLogin = () => {
     window.localStorage.setItem('access', 'false');
     const [user, setUser] = useState('');
     const [password, setPassword] = useState('');
+    const [access, setAccess] = useState(false);
+
+    useEffect(() => {
+        setAccess(true);
+    },[]);
 
     const handleUser = (e) => {
         setUser(e.target.value);
@@ -18,11 +23,10 @@ const FormLogin = () => {
     const handleLogin = async (e) => {
         try {
             e.preventDefault();
-            let access = await ValidateLogin(user, password, new LoginFetchRepository());
-            console.log(access.toString())
-            window.localStorage.setItem('access', access.toString());
+            let response = await ValidateLogin(user, password, new LoginFetchRepository());
+            setAccess(response);
         } catch (e) {
-            window.localStorage.setItem('access', 'false');
+            console.log(e);
         }
     };
 
@@ -37,6 +41,10 @@ const FormLogin = () => {
                 <input value={password} onChange={handlePassword} id='password' type='password'/>
             </div>
             <button id='login' onClick={handleLogin}>Ingresar</button>
+            <div role='alert-message'>
+                {
+                    !access? <p role='no-access'>Usuario y/o contraseña inválidos</p> : ''
+                }</div>
         </form>
     );
 };

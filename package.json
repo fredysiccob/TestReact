@@ -36,7 +36,10 @@
     "testMatch": [
       "**/*.steps.js",
       "**/*.test.js"
-    ]
+    ],
+    "globals": {
+      "window": true
+    }
   },
   "repository": {
     "type": "git",
