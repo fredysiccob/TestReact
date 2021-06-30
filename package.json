@@ -49,5 +49,7 @@
     "url": "https://github.com/fredysiccob/TestReact/issues"
   },
   "homepage": "https://github.com/fredysiccob/TestReact#readme",
-  "dependencies": {}
+  "dependencies": {
+    "axios": "^0.21.1"
+  }
 }
