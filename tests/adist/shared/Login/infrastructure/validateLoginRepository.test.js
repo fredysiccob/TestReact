@@ -9,16 +9,17 @@ describe('Repository LoginFetch', function () {
             let repository = new LoginFetchRepository();
 
             let response = await repository.validate(user, password);
-            console.log(response)
-            // expect(response).toEqual({
-            //     'code': 200,
-            //     'token' : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c',
-            //     'user' : {
-            //         id : 15,
-            //         name : 'Jesus ',
-            //         lastname : 'Osornio'
-            //     }
-            // });
+
+            expect(response).toEqual({
+                'id': 1,
+                'code': 200,
+                'taken' : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c',
+                'user' : {
+                    id : 15,
+                    name : 'Jesus',
+                    lastname : 'Osornio'
+                }
+            });
         });
     });
 });

@@ -15,14 +15,15 @@ const FormLogin = () => {
         setPassword(e.target.value);
     };
 
-    const handleLogin = (e) => {
-        // try {
+    const handleLogin = async (e) => {
+        try {
             e.preventDefault();
-            let access = ValidateLogin(user, password, new LoginFetchRepository());
-            window.localStorage.setItem('access', 'true');
-        // } catch (e) {
-        //     window.localStorage.setItem('access', 'false');
-        // }
+            let access = await ValidateLogin(user, password, new LoginFetchRepository());
+            console.log(access.toString())
+            window.localStorage.setItem('access', access.toString());
+        } catch (e) {
+            window.localStorage.setItem('access', 'false');
+        }
     };
 
     return (
